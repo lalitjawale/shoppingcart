@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+ 
+    <definition name="defaultTemplate" template="/template/template.jsp">
+        <put-attribute name="header" value="/template/header.jsp" />
+        <put-attribute name="menu" value="/template/menu.jsp" />
+        <put-attribute name="body" value="/template/body.jsp" />
+        <put-attribute name="footer" value="/template/footer.jsp" />
+    </definition>
+    
+    <definition name="index" extends="defaultTemplate">
+    	<put-attribute name="body" value="/index.jsp"></put-attribute>
+    	<put-attribute name="menu"  value="/"></put-attribute>
+    </definition>
+    
+     <definition name="login" extends="defaultTemplate">
+     	<put-attribute name="body" value="/login.jsp"></put-attribute>
+     	<put-attribute name="menu"  value=""></put-attribute>
+    </definition>  
+    
+     <definition name="register" extends="defaultTemplate">
+    	<put-attribute name="body" value="/register.jsp"></put-attribute>
+    </definition>
+     <definition name="products" extends="defaultTemplate">
+    	<put-attribute name="body" value="/products.jsp"></put-attribute>
+    	 <put-attribute name="footer" value="" />
+    		<!-- <put-attribute name="menu"  value=""></put-attribute> -->
+    </definition>
+     <definition name="ShoppingCart" extends="defaultTemplate">
+    	<put-attribute name="body" value="/ShoppingCart.jsp"></put-attribute>
+    	<put-attribute name="footer" value="" />
+    		<!-- <put-attribute name="menu"  value=""></put-attribute> -->
+    </definition>
+    
+    <definition name="addProduct" extends="defaultTemplate">
+    	<put-attribute name="body" value="/addProduct.jsp"></put-attribute>
+    </definition>
+    
+    <definition name="adminSuccess" extends="defaultTemplate">
+    	<put-attribute name="body" value="/adminSuccess.jsp"></put-attribute>
+    	 <put-attribute name="menu" value="" />
+    </definition>
+ 
+</tiles-definitions>

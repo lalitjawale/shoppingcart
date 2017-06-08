@@ -1,0 +1,62 @@
+System.out.println("item addind for first time in list");
+										  list=(ArrayList<CartItemBean>) session.getAttribute("list");
+										  hashMapObjet =(HashMap<Integer, Integer>) session.getAttribute("hashMapObjet");
+												
+												// quantityList.add(q);
+												 list.add(cartItemBean);
+												 int indexOfCartItem=list.indexOf(cartItemBean);
+												 int quantity=cartItemBean.getQuantity();
+												 hashMapObjet.put(indexOfCartItem, quantity);
+												 session.setAttribute("hmap", hashMapObjet);
+												  session.setAttribute("list", list);
+												  //session.setAttribute("strQuantity", strQuantity);
+												  cartBean = (CartBean) objCartBean ;
+												  cartBean.addCartItem(strModelNo, strDescription, strPrice, strQuantity);
+												  session.setAttribute("strQuantity", quantity);
+									 //
+							  					/* System.out.println("cheking the flow of objectCartBean" +objCartBean +"session object" +session);*/
+							  					
+							  					//System.out.println("sessio id " +session.getId() );
+							  					System.out.println(cartItemBean);
+							  					int chekIndex=list.indexOf(cartItemBean);
+							  					int q=cartItemBean.getQuantity();
+							  					/* if(session.getAttribute("hashMapObjet")!=null)
+															 {
+							  					 */ System.out.println("item already exists in list");
+							  					 HashMap<Integer, Integer> addItemToMap=new HashMap<>();
+							  					 addItemToMap.put(chekIndex, q);
+							  					 	
+							  					 
+							  					 HashMap<Integer, Integer> hmapp=(HashMap<Integer, Integer>) session.getAttribute("hashMapObjet");
+							  					 if(addItemToMap.equals(hmapp))
+							  					 {
+							  						 	System.out.println("index and quantity matches...");
+							  						 	int quan=hmapp.get(chekIndex);
+							  						 	System.out.println("quantity of existing item "+quan);
+							  						 	quan++;
+							  						 	strQuantity=quan;
+							  						 	hmapp.put(chekIndex, strQuantity);
+							  						 	
+							  						 	// session.setAttribute("strQuantity", strQuantity);
+							  						 	
+							  						 	cartBean = (CartBean) objCartBean ;
+							  						 	session.setAttribute("cartBean", cartBean);
+							  						 	cartBean.updateCartItem(chekIndex, strQuantity);
+							  						 	session.setAttribute("strQuantity", strQuantity);
+							  						 	session.setAttribute("hmap", hmapp);
+							  						 	
+							  					 }
+							  					 else
+							  					 {
+							  						 System.out.println("index and quantity not matches...");
+							  						 q++;
+							  						 strQuantity=q;
+							  						 hmapp.put(chekIndex, strQuantity);
+							  						 cartBean = (CartBean) objCartBean ;
+							  						 session.setAttribute("cartBean", cartBean);
+							  						 System.out.println(chekIndex);
+							  						 System.out.println(strQuantity);
+																		  cartBean.updateCartItem(chekIndex, strQuantity);
+																		  session.setAttribute("strQuantity", strQuantity);
+																		  	session.setAttribute("hmap", hmapp);
+													}	
