@@ -1,3 +1,2 @@
-# shoppingcart
-Shopping cart demo project
-Ahilya
+Shopping cart demo project Ahilya
+
