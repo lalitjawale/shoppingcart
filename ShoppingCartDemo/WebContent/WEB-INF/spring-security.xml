@@ -11,6 +11,7 @@
         <intercept-url pattern="/" access="permitAll" />
         <intercept-url pattern="/products" access="permitAll" />
         <intercept-url pattern="/ShoppingCart" access="permitAll" />
+        <intercept-url pattern="/shippingAndBilling" access="hasRole('ROLE_User')" />
         <intercept-url pattern="/homePage**" access="hasRole('ROLE_ADMIN') and hasRole('ROLE_User')" />
         <intercept-url pattern="/adminSuccess" access="hasRole('ROLE_ADMIN') " />
         <!--  <intercept-url pattern="/TLSuccess**" access="hasRole('ROLE_ADMIN') and hasRole('ROLE_TL')" /> -->

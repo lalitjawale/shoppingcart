@@ -18,23 +18,28 @@ import com.neo.service.UserService;
 @Controller
 public class UserController 
 {
+	@Autowired
+	 UserService  userService;
+	/*
 	
-	
-	/* @RequestMapping(value = "/", method = RequestMethod.GET)
-	    public String test()
+	 @RequestMapping(value = "/", method = RequestMethod.GET)
+	    public String init()
 	 {
 		 System.out.println("in controller");
 	        return "index";
-	    }*/
+	    }
+	*/
 	
-	@Autowired
-	 UserService  userService;
-	
-	 @RequestMapping(value = "/", method = RequestMethod.GET)
-	    public String init() {
-	        return "index";
+	 @RequestMapping(value = "/")
+	    public ModelAndView init() 
+	 {
+	        return  new ModelAndView("index");
 	    }
 
+	 @RequestMapping(value = "/goToIndex", method = RequestMethod.GET)
+	    public ModelAndView viewIndex() {
+	        return  new ModelAndView("index");
+	    }
 
 	@RequestMapping(value="/register")
 	public ModelAndView registerView()

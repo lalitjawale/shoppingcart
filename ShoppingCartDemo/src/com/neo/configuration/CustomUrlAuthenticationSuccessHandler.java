@@ -40,7 +40,7 @@ public class CustomUrlAuthenticationSuccessHandler extends SimpleUrlAuthenticati
         	return "/adminSuccess.jsp";
         } 
         else if(authorities.contains("ROLE_User")) 
-        	return "/userSuccess.jsp";
+        	return "/shippingAndBilling.jsp";
        
         else {
             throw new IllegalStateException();

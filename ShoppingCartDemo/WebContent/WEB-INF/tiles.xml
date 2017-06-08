@@ -13,7 +13,7 @@
     
     <definition name="index" extends="defaultTemplate">
     	<put-attribute name="body" value="/index.jsp"></put-attribute>
-    	<put-attribute name="menu"  value="/"></put-attribute>
+    	<put-attribute name="menu"  value=""></put-attribute>
     </definition>
     
      <definition name="login" extends="defaultTemplate">
@@ -41,6 +41,17 @@
     
     <definition name="adminSuccess" extends="defaultTemplate">
     	<put-attribute name="body" value="/adminSuccess.jsp"></put-attribute>
+    	 <put-attribute name="menu" value="" />
+    </definition>
+    
+     <definition name="shippingAndBilling" extends="defaultTemplate">
+    	<put-attribute name="body" value="/shippingAndBilling.jsp"></put-attribute>
+    	 <put-attribute name="menu" value="" />
+    	 <put-attribute name="footer" value="/" />
+    </definition>
+    
+     <definition name="paymentOption" extends="defaultTemplate">
+    	<put-attribute name="body" value="/paymentOption.jsp"></put-attribute>
     	 <put-attribute name="menu" value="" />
     </definition>
  

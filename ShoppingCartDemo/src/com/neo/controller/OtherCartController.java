@@ -14,54 +14,25 @@ import org.springframework.web.servlet.ModelAndView;
 import com.neo.model.CartBean;
 import com.neo.model.CartItemBean;
 
-/*@Controller*/
+@Controller
 public class OtherCartController
-{
-	/*private List<CartItemBean> cartItemBeanList=new ArrayList();
-*/
-	/*@RequestMapping("/viewCart")
-	public ModelAndView viewCart()
+{/*
+	@RequestMapping(value="/checkOut")
+	public ModelAndView viewChekOutPage()
 	{
-		return new ModelAndView("ShoppingCart");
-	}
-	*/
-	@RequestMapping(value="/addToCart",method=RequestMethod.POST)
-	public ModelAndView addToCart(@ModelAttribute("products")CartItemBean cartItemBean ,HttpServletRequest request)
-	{
-		System.out.println("in controller");
-	CartBean cartBean=new CartBean();
-		List<CartItemBean> cartItemBeanList=cartBean.getCartItems();
-		if(cartItemBeanList.indexOf(cartItemBean)== -1)
-		{
-			System.out.println();
-			cartItemBeanList.add(cartItemBean);
-		}
-		else
-		{
-			int quantity=cartItemBean.getQuantity();
-			quantity++;
-			cartItemBean.setQuantity(quantity);
-			System.out.println(cartItemBean.getQuantity());
-			
-		}
-		
-		/*System.out.println(cartItemBean);
-		if(cartItemBeanList.indexOf(cartItemBean)== -1)
-		{
-			System.out.println();
-			cartItemBeanList.add(cartItemBean);
-		}
-		else
-		{
-			int quantity=cartItemBean.getQuantity();
-			quantity++;
-			cartItemBean.setQuantity(quantity);
-			System.out.println(cartItemBean.getQuantity());
-			
-		}
-	*/	
-		return new ModelAndView("products");
+		return new ModelAndView("index");
+	}*/
 	
+	@RequestMapping(value="/shippingAndBillingAction")
+	public ModelAndView viewPaymentModes()
+	{
+		return new ModelAndView("paymentOption");
+	}
+	
+	@RequestMapping(value="/paymentAction")
+	public ModelAndView viewPayment()
+	{
+		return new ModelAndView("/");
 	}
 	
 }

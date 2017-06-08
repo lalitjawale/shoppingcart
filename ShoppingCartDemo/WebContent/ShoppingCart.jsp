@@ -48,6 +48,12 @@
     <td> </td>
     <td><font size="2" face="Verdana, Arial, Helvetica, sans-serif">Subtotal: $<c:out value="${cart.orderTotal}"/></font></td>
   </tr>
+  
+  <tr>
+    <td colspan="2"> </td>
+    <td> </td>
+    <td><font size="2" face="Verdana, Arial, Helvetica, sans-serif"><a href="">ChekOut</a></font></td>
+  </tr>
 </table>
 </body>
 </html>
