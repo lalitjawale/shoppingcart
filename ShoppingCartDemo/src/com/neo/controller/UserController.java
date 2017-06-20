@@ -15,47 +15,29 @@ import com.neo.service.UserService;
 
 
 
+
 @Controller
 public class UserController 
 {
 	@Autowired
 	 UserService  userService;
-	/*
 	
-	 @RequestMapping(value = "/", method = RequestMethod.GET)
-	    public String init()
-	 {
-		 System.out.println("in controller");
-	        return "index";
-	    }
-	*/
 	
-	 @RequestMapping(value = "/")
-	    public ModelAndView init() 
-	 {
-	        return  new ModelAndView("index");
-	    }
-
-	 @RequestMapping(value = "/goToIndex", method = RequestMethod.GET)
-	    public ModelAndView viewIndex() {
-	        return  new ModelAndView("index");
-	    }
-
 	@RequestMapping(value="/register")
 	public ModelAndView registerView()
 	{
 		System.out.println("Welcome to registeration...");
-		return  new ModelAndView("register","users",new User());
+		return  new ModelAndView("registerpage","users",new User());
 	}
-	
 	@RequestMapping(value="/create",method=RequestMethod.POST)
 	public ModelAndView create(@ModelAttribute("User") User user)
 	{
 		System.out.println("In controller to register new user..");
 		userService.create(user);
 		System.out.println("after query ");
-		return new ModelAndView("login","users",new User());
+		return new ModelAndView("indexpage","employee",new User());
 	}
+	
 	
 	@RequestMapping(value = "/403", method = RequestMethod.GET)
 	 public String accessDenied(ModelMap model, Principal principal) 

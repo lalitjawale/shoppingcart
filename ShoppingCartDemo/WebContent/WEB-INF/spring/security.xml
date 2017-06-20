@@ -1,0 +1,92 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+    xmlns:beans="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+     http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+    
+    <http pattern="/resources/**" security="none" />
+     <http auto-config="true"  use-expressions="true" authentication-manager-ref="custAuth">
+        <intercept-url pattern="/" access="permitAll" />
+        <intercept-url pattern="/products" access="permitAll" />
+        <intercept-url pattern="/ShoppingCart" access="permitAll" />
+        <intercept-url pattern="/homePage**" access="permitAll" />
+        <access-denied-handler error-page="/403"/> 
+         <intercept-url pattern="/login**" access="permitAll"/>
+        
+         <form-login login-page="/loginpage"  
+         			 username-parameter="username"
+         			 password-parameter="password"
+         			 authentication-failure-url="/login.do?error=true"
+         			 
+                     authentication-failure-handler-ref="customUrlAuthenticationFailureHandler"
+                     authentication-success-handler-ref="customUrlAuthenticationSuccessHandler" /> 
+        
+         <csrf disabled="true"/>
+         
+         <!-- default-target-url="/homePage"
+                     always-use-default-target="true" -->
+    </http>
+    <beans:import resource="appproperties.xml" />
+	<beans:bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<beans:property name="driverClassName" value="${jdbc.driverClassName}" />
+		<beans:property name="url" value="${jdbc.url}" />
+		<beans:property name="username" value="${jdbc.username}" />
+		<beans:property name="password" value="${jdbc.password}" />
+		
+	</beans:bean>
+	<beans:bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<beans:property name="dataSource" ref="dataSource" />
+	</beans:bean>
+
+	<beans:bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<beans:property name="dataSource" ref="dataSource" />
+		
+		
+	</beans:bean>
+
+	<beans:bean id="transactionTemplate"
+		class="org.springframework.transaction.support.TransactionTemplate">
+		<beans:property name="transactionManager" ref="transactionManager" />
+		
+	</beans:bean>
+	
+   
+	<!-- <authentication-manager >
+		<authentication-provider ref="customAuthenticationProvider" />
+	</authentication-manager> -->
+	
+   <context:component-scan base-package="com.neo.*"></context:component-scan>
+	<mvc:annotation-driven></mvc:annotation-driven>
+ <beans:bean id="customUrlAuthenticationSuccessHandler"
+		class="com.neo.security.CustomUrlAuthenticationSuccessHandler" >
+		 <beans:property name="defaultTargetUrl" value="/chek"/>
+		 <beans:property name="jdbcTemplate" ref="jdbcTemplate" />
+		 </beans:bean>
+			
+	<beans:bean id="custAuth" class="com.neo.security.CustomAuthenticationProvider" >
+	<beans:property name="jdbcTemplate" ref="jdbcTemplate" /></beans:bean>
+	
+		 	<beans:bean id="customUrlAuthenticationFailureHandler"
+		class="com.neo.security.CustomUrlAuthenticationFailureHandler" />
+
+    </beans:beans>
+    
+    
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     

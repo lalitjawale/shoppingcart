@@ -8,6 +8,6 @@
 </head>
 <body>
  --%>
- Copyright &copy; NeoSoftTechnologies 2017
+ <!-- Copyright &copy; NeoSoftTechnologies 2017 -->
 <!-- </body>
 </html> -->

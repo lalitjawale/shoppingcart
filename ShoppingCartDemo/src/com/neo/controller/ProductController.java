@@ -14,14 +14,14 @@ public class ProductController
 	public ModelAndView productHomePage()
 	{
 		System.out.println("am in product controller");
-		return new ModelAndView("products","products",new CartItemBean());
+		return new ModelAndView("productpage","products",new CartItemBean());
 	}
 	
 	@RequestMapping(value="/addProduct",method = RequestMethod.GET)
 	public ModelAndView productsView()
 	{
 		System.out.println("am in product controller");
-		return new ModelAndView("addProduct");
+		return new ModelAndView("addProductpage");
 	}
 
 }

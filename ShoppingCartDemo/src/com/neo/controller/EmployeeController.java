@@ -19,7 +19,7 @@ public class EmployeeController
 	@Autowired
 	 UserService  userService;
 	
-	 /*@RequestMapping(value = "/", method = RequestMethod.GET)
+	/* @RequestMapping(value = "/", method = RequestMethod.GET)
 	    public String init() {
 	        return "index";
 	    }*/

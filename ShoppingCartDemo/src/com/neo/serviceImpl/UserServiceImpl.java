@@ -34,13 +34,6 @@ public class UserServiceImpl implements UserService,Serializable
 	}
 
 
-	@Override
-	public User getUserByName(String uname)
-	{
-		User user=employeeDao.getUserByName(uname);
-		/*System.out.println("user role in com.neo.serviceImpl" +employee.getUser_Role());*/
-		return user;
-	}
-
+	
 	
 }

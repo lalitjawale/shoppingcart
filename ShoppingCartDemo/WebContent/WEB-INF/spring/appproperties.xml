@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<beans:bean id="messageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<beans:property name="basenames">
+		<beans:list>
+		<beans:value>classpath:lang/lang</beans:value>
+		</beans:list>
+		</beans:property>
+	</beans:bean>
+<beans:bean id="placeholderConfigure" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	<beans:property name="locations">
+	<beans:list>
+	<beans:value>classpath:app/app.properties</beans:value>
+	<beans:value>classpath:app/jdbc.properties</beans:value>
+	<beans:value>classpath:app/hibernate.properties</beans:value>
+	</beans:list>
+	</beans:property>
+</beans:bean>
+</beans:beans>

@@ -1,7 +1,9 @@
 package com.neo.daoImpl;
 
 import java.sql.ResultSet;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -10,6 +12,7 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.transform.AliasToBeanResultTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 /*import org.springframework.security.core.userdetails.User;*/
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,8 +28,13 @@ public class EmployeeDaoImpl implements EmploeeDao
 	
 	/*@Autowired
 	private SessionFactory sessionFactory;
+	private JdbcTemplate jdbcTemplate;
 	*/
-
+	private JdbcTemplate jdbcTemplate;
+	@Autowired
+	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+		this.jdbcTemplate = jdbcTemplate;
+	}
 	@Override
 	public boolean create(User user) 
 	{
@@ -35,7 +43,7 @@ public class EmployeeDaoImpl implements EmploeeDao
 		session.persist(employee);
 		return true;*/
 		
-		Configuration cfg=new Configuration();
+		/*Configuration cfg=new Configuration();
 		cfg.configure("hibernate.cfg.xml");
 		
 		SessionFactory factory=cfg.buildSessionFactory();
@@ -50,11 +58,29 @@ public class EmployeeDaoImpl implements EmploeeDao
 			System.out.println("data inserted...");
 			return true;
 		}
+		jdbcTemplate.c
+		
+		return false;*/
+		 Map<String, Object> paramMap = new HashMap<String, Object>();
+	        paramMap.put("contactNumber", user.getContactNumber());
+	        paramMap.put("emailId", user.getEmailId());
+	        paramMap.put("password", user.getPassword());
+	        paramMap.put("username", user.getUsername());
+		
+	        /*String sql="";*/
+		System.out.println("username is " +user.getUsername());
+		int result=jdbcTemplate.update("insert into user(contactNumber,emailId,password,username)values(?,?,?,?)", new Object[]{ user.getContactNumber(),user.getEmailId(),user.getPassword(),user.getUsername()});
+		if(result>0)
+		{
+			System.out.println("registered successfully...");
+			return true;
+		}
 		return false;
+		
 		
 	}
 
-	@Override
+	/*@Override
 	public User getUserByName(String uname)
 	{
 		
@@ -73,7 +99,7 @@ public class EmployeeDaoImpl implements EmploeeDao
 			for (User user : allUsers) 
 			{
 				allUsers.add(user);
-				/*employee.setEmailId(allUsers.get(1));*/
+				employee.setEmailId(allUsers.get(1));
 				System.out.println(user.getUser_Role());
 				System.out.println("role is"+user.getUser_Role() +"contact num"+user.getContactNumber() +"emailId"+user.getEmailId()+"password"+user.getPassword());
 				
@@ -88,5 +114,5 @@ public class EmployeeDaoImpl implements EmploeeDao
 		return null;
 		
 	}
-
+*/
 }

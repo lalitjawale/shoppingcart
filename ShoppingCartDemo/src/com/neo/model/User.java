@@ -1,16 +1,19 @@
 package com.neo.model;
 
 import java.io.Serializable;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Entity;
 
-@Table
+@Table(name="user")
 @Entity
 public class User implements Serializable
 {
@@ -27,8 +30,10 @@ public class User implements Serializable
 	private String emailId;
 	@Column
 	private String contactNumber;
-	@Column
-	private String user_Role;
+	 @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+	private Set<Billing> billings;
+	
+	@Column(name="id")
 	public int getId() {
 		return id;
 	}
@@ -59,24 +64,38 @@ public class User implements Serializable
 	public void setContactNumber(String contactNumber) {
 		this.contactNumber = contactNumber;
 	}
-	public String getUser_Role() {
-		return user_Role;
-	}
-	public void setUser_Role(String user_Role) {
-		this.user_Role = user_Role;
-	}
-	@Override
+	
+	/*@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", password="
 				+ password + ", emailId=" + emailId + ", contactNumber="
-				+ contactNumber + ", user_Role=" + user_Role + ", getId()="
+				+ contactNumber + ",  getId()="
 				+ getId() + ", getUsername()=" + getUsername()
 				+ ", getPassword()=" + getPassword() + ", getEmailId()="
 				+ getEmailId() + ", getContactNumber()=" + getContactNumber()
-				+ ", getUser_Role()=" + getUser_Role() + ", getClass()="
+				+ ",  getClass()="
 				+ getClass() + ", hashCode()=" + hashCode() + ", toString()="
 				+ super.toString() + "]";
+	}*/
+	
+	public void setBillings(Set<Billing> billings) {
+		this.billings = billings;
 	} 
+	
+	public Set<Billing> getBillings() {
+		return billings;
+	}
+	@Override
+	public String toString()
+	{
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", emailId=" + emailId
+				+ ", contactNumber=" + contactNumber + ", billings=" + billings + ", getId()=" + getId()
+				+ ", getUsername()=" + getUsername() + ", getPassword()=" + getPassword() + ", getEmailId()="
+				+ getEmailId() + ", getContactNumber()=" + getContactNumber() + ", getBillings()=" + getBillings()
+				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
+				+ "]";
+	}
+	
 	
 
 }

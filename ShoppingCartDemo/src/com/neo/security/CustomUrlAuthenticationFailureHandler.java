@@ -1,4 +1,4 @@
-package com.neo.configuration;
+package com.neo.security;
 
 import java.io.IOException;
 
@@ -10,14 +10,41 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.web.WebAttributes;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.stereotype.Component;
 
 
-import com.neo.service.UserService;
+
+
+
 
 
 //Authentication failure class
-public class CustomUrlAuthenticationFailureHandler implements AuthenticationFailureHandler
+@Component
+public class CustomUrlAuthenticationFailureHandler implements AuthenticationFailureHandler {
+
+	private String authenticationFailureUrl;
+
+	public void setAuthenticationFailureUrl(String authenticationFailureUrl) {
+		this.authenticationFailureUrl = authenticationFailureUrl;
+	}
+
+	@Override
+	public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
+			AuthenticationException auth) throws IOException, ServletException {
+		if ("true".equals(request.getHeader("AJAX"))) {
+			response.getWriter().print("Error");
+			response.getWriter().flush();
+		} else {
+			request.getSession().setAttribute(WebAttributes.AUTHENTICATION_EXCEPTION, auth);
+			response.sendRedirect(authenticationFailureUrl);
+		}
+	}
+}
+ 
+
+/*implements AuthenticationFailureHandler
 {
 	@Autowired
 	UserService logincontrollerserviceint;
@@ -46,3 +73,4 @@ public class CustomUrlAuthenticationFailureHandler implements AuthenticationFail
 }
 
 
+*/

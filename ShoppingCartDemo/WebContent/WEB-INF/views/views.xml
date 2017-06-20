@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+	<definition name="indexpage" extends="defaultTemplate">
+	    <put-attribute name="body" value="/WEB-INF/views/index.jsp"></put-attribute>
+	    <put-attribute name="menu" value=""></put-attribute>
+	</definition>
+	
+	<definition name="loginpage" extends="defaultTemplate">
+	   	<put-attribute name="body" value="/WEB-INF/views/login.jsp"></put-attribute>
+	</definition>	
+	
+	<!-- <definition name="chek" extends="defaultTemplate">
+	   	<put-attribute name="body" value="/WEB-INF/views/login.jsp"></put-attribute>
+	</definition> -->
+	
+	<definition name="registerpage" extends="defaultTemplate">
+	   	<put-attribute name="body" value="/WEB-INF/views/register.jsp"></put-attribute>
+	</definition>
+	<definition name="productpage" extends="defaultTemplate">
+	   	<put-attribute name="body" value="/WEB-INF/views/products.jsp"></put-attribute>
+	</definition>
+	<definition name="addProductpage" extends="defaultTemplate">
+	   	<put-attribute name="body" value="/WEB-INF/views/addProduct.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="shoppingCartpage" extends="defaultTemplate">
+	   	<put-attribute name="body" value="/WEB-INF/views/shoppingCart.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="orderPage" extends="defaultTemplate">
+	   	<put-attribute name="body" value="/WEB-INF/views/orderBilling.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="orderSuccessPage" extends="defaultTemplate">
+	   	<put-attribute name="body" value="/WEB-INF/views/orderSuccess.jsp"></put-attribute>
+	</definition>
+	
+	
+
+</tiles-definitions>

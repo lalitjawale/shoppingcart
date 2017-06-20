@@ -7,5 +7,5 @@ public interface UserService
 	public  boolean create(User user);
 	/*public User getUserByName(String username);*/
 
-	public User getUserByName(String uname);
+	/*public User getUserByName(String uname);*/
 }

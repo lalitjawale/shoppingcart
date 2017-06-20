@@ -24,7 +24,7 @@ public class CartController
 	@RequestMapping("/viewCart")
 	public ModelAndView viewCart()
 	{
-		return new ModelAndView("ShoppingCart");
+		return new ModelAndView("shoppingCartpage");
 	}
 
 	@RequestMapping(value="/addToCart",method=RequestMethod.POST)
@@ -120,7 +120,7 @@ public class CartController
 						  
 						  
 						  
-						  	return new ModelAndView("products");
+						  	return new ModelAndView("productpage");
 		 }	
 		
 	
@@ -148,7 +148,7 @@ public class CartController
 		  
 		  cartBean.updateCartItem(in, strQuantity);
 		  System.out.println("after upadate");
-		  return new ModelAndView("ShoppingCart");
+		  return new ModelAndView("shoppingCartpage");
 	}
 	
 	
@@ -170,7 +170,7 @@ public class CartController
 		  }
 		  
 		  cartBean.deleteCartItem(strItemIndex);
-		  return new ModelAndView("ShoppingCart");
+		  return new ModelAndView("shoppingCartpage");
 		
 	}
 	

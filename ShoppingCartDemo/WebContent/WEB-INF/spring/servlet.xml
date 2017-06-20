@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
- 
-
-  <beans xmlns="http://www.springframework.org/schema/beans"
+<beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
@@ -18,22 +16,24 @@
 
 <mvc:default-servlet-handler />
  
- 
- 
+ <!-- <bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views/" />
+		<property name="suffix" value=".jsp" />
+		<property name="order" value="1" />
+	</bean> -->
+	<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>/WEB-INF/tiles.xml</value>
+				<value>/WEB-INF/views/views.xml</value>
+			</list>
+		</property>
+	</bean>  	
 
-<!-- //this was used before using tiles -->
-<!--  <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" id="jspViewResolver">
- <property name = "prefix" value = "/" />
- <property name="suffix" value=".jsp"></property>
-</bean>  -->
-<bean id="viewResolver" class="org.springframework.web.servlet.view.tiles3.TilesViewResolver"/>
+<bean id="tilesviewResolver" class="org.springframework.web.servlet.view.tiles3.TilesViewResolver"/>
 
- <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
-        <property name="definitions">
-            <list>
-                <value>/WEB-INF/tiles.xml</value>
-            </list>
-        </property>
-    </bean>
+
+ 
 
 </beans>
